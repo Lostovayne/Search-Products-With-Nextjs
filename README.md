@@ -13,6 +13,7 @@ A modern and efficient product search application that allows users to search an
 - HTML5
 - CSS3
 - JavaScript
+- shadcn/ui
 - [Additional technologies will be added as the project progresses]
 
 ## Installation
