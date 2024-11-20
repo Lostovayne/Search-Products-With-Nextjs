@@ -1,6 +1,6 @@
 "use client";
 import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
+import { Loader2, Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { FC, ReactElement, useRef, useState, useTransition } from "react";
 import { Button } from "./ui/button";
@@ -23,6 +23,7 @@ const SearchBar: FC = ({}): ReactElement => {
     <div className="relative w-full h-14 flex flex-col bg-white">
       <div className="relative h-14 z-10 rounded-md">
         <Input
+          disabled={isSearching}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={(e) => {
@@ -36,8 +37,13 @@ const SearchBar: FC = ({}): ReactElement => {
           ref={inputRef}
           className="absolute inset-0 h-full"
         />
-        <Button onClick={search} size={"sm"} className="absolute right-0 inset-y-0 h-full rounded-l-none">
-          <Search className="size-6" />
+        <Button
+          disabled={isSearching}
+          onClick={search}
+          size={"sm"}
+          className="absolute right-0 inset-y-0 h-full rounded-l-none"
+        >
+          {isSearching ? <Loader2 className="animate-spin size-6" /> : <Search className="size-6" />}
         </Button>
       </div>
     </div>

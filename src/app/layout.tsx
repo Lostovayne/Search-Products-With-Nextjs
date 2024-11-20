@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <div className="relative min-h-screen isolate overflow-hidden border-b border-gray-200 bg-white">
+        <div className="relative min-h-screen isolate overflow-hidden border-b border-gray-200 bg-white text-slate-900">
           <svg
             className="absolute inset-0 -z-10 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
             aria-hidden="true"
