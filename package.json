@@ -6,11 +6,14 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "drizzle:seed": "bun ./src/db/seed.ts"
   },
   "dependencies": {
+    "@faker-js/faker": "^9.2.0",
     "@neondatabase/serverless": "^0.10.3",
     "@radix-ui/react-slot": "^1.1.0",
+    "@upstash/vector": "^1.1.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.5",
