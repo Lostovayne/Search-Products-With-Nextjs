@@ -1,63 +1,130 @@
-# Search Products
+# Search Products Application
 
-## Description
-A modern and efficient product search application that allows users to search and filter products easily.
+A modern web application built with Next.js 15 for searching and managing products efficiently.
 
 ## Features
-- Fast product search functionality
-- Modern and responsive user interface
-- Filter products by various criteria
-- Real-time search results
 
-## Technologies
-- HTML5
-- CSS3
-- JavaScript
-- shadcn/ui
-- [Additional technologies will be added as the project progresses]
+- Server-side rendering with Next.js 15
+- Modern UI with Tailwind CSS
+- Database integration with NeonDB and Drizzle ORM
+- Type-safe development with TypeScript
+- Responsive design for all devices
+- Fast development with Turbopack
 
-## Installation
+## Tech Stack
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/searchProducts.git
-```
-
-2. Navigate to the project directory:
-```bash
-cd searchProducts
-```
-
-3. Open the project in your preferred code editor.
-
-## Usage
-[Usage instructions will be added as the project develops]
+- **Framework:** Next.js 15
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Database:** NeonDB (Serverless Postgres)
+- **ORM:** Drizzle ORM
+- **UI Components:** Radix UI
+- **Development Tools:**
+  - ESLint for code linting
+  - Turbopack for fast development
+  - PostCSS for CSS processing
 
 ## Project Structure
+
 ```
 searchProducts/
-├── README.md
-└── [Additional structure will be added as the project develops]
+├── src/
+│   ├── app/          # Next.js application routes
+│   ├── db/           # Database configuration and models
+│   └── components/   # Reusable React components
+├── public/           # Static assets
+├── tailwind.config.ts # Tailwind CSS configuration
+├── drizzle.config.ts # Drizzle ORM configuration
+└── components.json   # UI components configuration
 ```
 
-## Contributing
-Contributions are welcome! Please feel free to submit a Pull Request.
+## Getting Started
 
-1. Fork the project
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/Lostovayne/searchProducts.git
+   cd searchProducts
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   # or
+   bun install
+   ```
+
+3. **Environment Setup**
+   Create a `.env` file in the root directory with the following variables:
+
+   ```env
+   DATABASE_URL=your_neondb_connection_string
+   ```
+
+4. **Run the development server**
+
+   ```bash
+   npm run dev
+   # or
+   bun dev
+   ```
+
+5. **Build for production**
+   ```bash
+   npm run build
+   # or
+   bun run build
+   ```
+
+## Scripts
+
+- `dev`: Start development server with Turbopack
+- `build`: Build the application for production
+- `start`: Start the production server
+- `lint`: Run ESLint for code linting
+
+## Dependencies
+
+### Main Dependencies
+
+- Next.js 15.0.3
+- React 19.0.0-rc
+- @neondatabase/serverless
+- drizzle-orm
+- Tailwind CSS
+- Radix UI components
+
+### Development Dependencies
+
+- TypeScript
+- ESLint
+- PostCSS
+- drizzle-kit
+- Various type definitions
+
+## Contributing
+
+1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'feat: Add some AmazingFeature'`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Author
-[Your Name]
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Authors
+
+- Deuslovuilt - Initial work
 
 ## Acknowledgments
-- Thanks to all contributors who help improve this project
-- Inspiration from modern e-commerce platforms
+
+- Next.js team for the amazing framework
+- Vercel for the deployment platform
+- NeonDB for the serverless database solution
 
 ---
- with  by [Your Name]
+
+with by Deuslovuilt
