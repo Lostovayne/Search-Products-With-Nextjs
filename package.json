@@ -20,21 +20,22 @@
     "drizzle-orm": "^0.36.4",
     "lucide-react": "^0.460.0",
     "next": "15.0.3",
+    "openai": "^4.73.0",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
-    "tailwind-merge": "^2.5.4",
+    "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/node": "^20.17.7",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "drizzle-kit": "^0.28.1",
-    "eslint": "^8",
+    "eslint": "^8.57.1",
     "eslint-config-next": "15.0.3",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
     "tsx": "^4.19.2",
-    "typescript": "^5"
+    "typescript": "^5.7.2"
   }
 }
