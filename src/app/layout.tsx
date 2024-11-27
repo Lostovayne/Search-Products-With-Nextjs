@@ -2,6 +2,7 @@ import { Icons } from "@/components/icons";
 import SearchBar from "@/components/searchbar";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Suspense } from "react";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -62,7 +63,9 @@ export default function RootLayout({
             </p>
 
             <div className="mx-auto mt-16 w-full max-w-2xl flex flex-col">
-              <SearchBar />
+              <Suspense fallback={<div>Loading search...</div>}>
+                <SearchBar />
+              </Suspense>
               {children}
             </div>
           </div>
