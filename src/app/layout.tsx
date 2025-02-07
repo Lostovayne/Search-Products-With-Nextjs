@@ -59,7 +59,7 @@ export default function RootLayout({
             <h1 className="tracking-tight text-4xl sm:text-6xl font-bold">MagicSearch</h1>
             <p className="max-w-xl text-center text-lg text-slate-700">
               a beautiful search engine, hybrid search engine that enhances search accuracy by querying
-              semantically related results.
+              semantically related results. for example jeans or jacket.
             </p>
 
             <div className="mx-auto mt-16 w-full max-w-2xl flex flex-col">
