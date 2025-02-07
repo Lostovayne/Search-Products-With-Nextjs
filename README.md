@@ -2,6 +2,8 @@
 
 A modern web application built with Next.js 15 for searching and managing products efficiently.
 
+![Project Banner](public/magic.png)
+
 ## Features
 
 - Server-side rendering with Next.js 15
@@ -60,6 +62,8 @@ searchProducts/
 
    ```env
    DATABASE_URL=your_neondb_connection_string
+   UPSTASH_VECTOR_REST_URL=""
+   UPSTASH_VECTOR_REST_TOKEN=""
    ```
 
 4. **Run the development server**
@@ -83,6 +87,7 @@ searchProducts/
 - `build`: Build the application for production
 - `start`: Start the production server
 - `lint`: Run ESLint for code linting
+- `Drizzle:seed`: Run Seed Database
 
 ## Dependencies
 
@@ -124,6 +129,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Next.js team for the amazing framework
 - Vercel for the deployment platform
 - NeonDB for the serverless database solution
+- Upstash for the vector database and embedding model
 
 ---
 

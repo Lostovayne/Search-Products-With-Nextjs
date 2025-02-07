@@ -3,7 +3,6 @@ import { neon } from "@neondatabase/serverless";
 import { Index } from "@upstash/vector";
 import * as dotenv from "dotenv";
 import { drizzle } from "drizzle-orm/neon-http";
-import { vectorize } from "../lib/vectorize";
 import { productsTable } from "./schema";
 
 dotenv.config();
@@ -11,8 +10,8 @@ dotenv.config();
 const index = new Index();
 
 async function main() {
-  const connector = neon(process.env.DATABASE_URL!);
-  const db = drizzle(connector);
+  const sql = neon(process.env.DATABASE_URL!);
+  const db = drizzle({ client: sql });
 
   const products: (typeof productsTable.$inferInsert)[] = [];
 
@@ -136,10 +135,11 @@ async function main() {
 
   products.forEach(async (product) => {
     await db.insert(productsTable).values(product).onConflictDoNothing();
+    // vector: await vectorize(`${product.name}: ${product.description}`),
 
     await index.upsert({
       id: product.id!,
-      vector: await vectorize(`${product.name}: ${product.description}`),
+      data: `${product.name}:${product.description}`,
       metadata: {
         id: product.id,
         name: product.name,
@@ -156,7 +156,9 @@ function formatFileName(fileName: string): string {
   const nameWithoutExtension = fileName.replace(/\.\w+$/, "");
   const words = nameWithoutExtension.split("_");
 
-  const capitalizedWords = words.map((word) => word.charAt(0).toUpperCase() + word.slice(1));
+  const capitalizedWords = words.map(
+    (word) => word.charAt(0).toUpperCase() + word.slice(1)
+  );
   return capitalizedWords.join(" ");
 }
 

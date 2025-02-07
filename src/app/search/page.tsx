@@ -1,6 +1,6 @@
 import { db } from "@/db";
 import { productsTable, type Product } from "@/db/schema";
-import { vectorize } from "@/lib/vectorize";
+// import { vectorize } from "@/lib/vectorize";
 import { Index } from "@upstash/vector";
 import { sql } from "drizzle-orm";
 import { X } from "lucide-react";
@@ -42,23 +42,33 @@ const Page = async ({ searchParams }: PageProps) => {
     .select()
     .from(productsTable)
     .where(
-      sql`to_tsvector('simple', lower(concat(${productsTable.name}, ' ', ${productsTable.description}))) @@ to_tsquery('simple', ${query.trim().toLowerCase().split(/\s+/).join(" & ")})`
+      sql`to_tsvector('simple', lower(concat(${productsTable.name}, ' ', ${
+        productsTable.description
+      }))) @@ to_tsquery('simple', ${query
+        .trim()
+        .toLowerCase()
+        .split(/\s+/)
+        .join(" & ")})`
     )
     .limit(4);
 
   if (products.length < 3) {
     // search products by semantic similarity
-    const vector = await vectorize(query);
+    // const vector = await vectorize(query);
 
     const res = await index.query({
+      data: query,
       topK: 5,
-      vector,
+      includeVectors: true,
       includeMetadata: true,
     });
 
     const vectorProducts = res
       .filter((existingProduct) => {
-        if (products.some((product) => product.id === existingProduct.id) || existingProduct.score < 0.9) {
+        if (
+          products.some((product) => product.id === existingProduct.id) ||
+          existingProduct.score < 0.9
+        ) {
           return false;
         } else {
           return true;
@@ -73,7 +83,9 @@ const Page = async ({ searchParams }: PageProps) => {
     return (
       <div className="text-center py-4 bg-white shadow-md rounded-b-md">
         <X className="mx-auto size-8 text-gray-400" />
-        <h3 className="mt-2 text-sm font-semibold text-gray-900 ">No products found</h3>
+        <h3 className="mt-2 text-sm font-semibold text-gray-900 ">
+          No products found
+        </h3>
         <p className="mt-1 text-sm text-gray-500 mx-auto max-w-prose">
           Sorry, we couldn&apos;t find any products that match your search.{" "}
           <span className="text-green-600 font-medium">{query}</span>
@@ -88,12 +100,23 @@ const Page = async ({ searchParams }: PageProps) => {
         <Link key={product.id} href={`/products/${product.id}`}>
           <li className="mx-auto py-4 px-8 flex space-x-4">
             <div className="relative flex items-center bg-zinc-100 rounded-lg h-40 w-40">
-              <Image loading="eager" fill alt="product-image" src={`/${product.imageId}`} />
+              <Image
+                loading="eager"
+                fill
+                alt="product-image"
+                src={`/${product.imageId}`}
+              />
             </div>
             <div className="w-full flex-1 space-y-2 py-1">
-              <h1 className="text-lg font-medium text-gray-900">{product.name}</h1>
-              <p className="prose prose-sm text-gray-500 line-clamp-3">{product.description}</p>
-              <p className="text-base font-medium text-gray-900">${product.price.toFixed(2)}</p>
+              <h1 className="text-lg font-medium text-gray-900">
+                {product.name}
+              </h1>
+              <p className="prose prose-sm text-gray-500 line-clamp-3">
+                {product.description}
+              </p>
+              <p className="text-base font-medium text-gray-900">
+                ${product.price.toFixed(2)}
+              </p>
             </div>
           </li>
         </Link>
